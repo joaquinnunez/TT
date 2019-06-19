@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  tt:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: trading_tools
+    container_name: tt
+    command: ["node_modules/nodemon/bin/nodemon.js", "/app/ws/orders.js"]
+    volumes:
+      - "./ws/:/app/ws/"
+    ports:
+      - "7000:7000"
+    env_file:
+      - .env
